@@ -1,0 +1,30 @@
+.table .thead-dark th {
+    color: #fff;
+    background-color: #212529;
+    border-color: #32383e;
+}
+
+
+.main{
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.smal.main{
+    margin-top: 50px;
+    width: 40%;
+}
+
+.btn{
+    float: right;
+}
+
+.button-back{
+    margin-right: 5%;
+}
+
+.image_index{
+    width: 100px;
+    height: 100px;
+}
