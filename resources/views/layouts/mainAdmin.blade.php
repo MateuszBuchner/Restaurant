@@ -50,30 +50,30 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <x-admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                    <i class="fas fa-fw fa-chart-area"></i>
+            <li class="nav-item aha">
+                <x-admin-nav-link class="nav-link" :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                    <i class="far fa-list-alt"></i>
                     <span>Categories</span>
                 </x-admin-nav-link>
             </li>
 
             <li class="nav-item">
-                <x-admin-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                <x-admin-nav-link class="nav-link" :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
+                    <i class="fas fa-clipboard"></i>
                     <span>Menus</span>
                 </x-admin-nav-link>
             </li>
 
             <li class="nav-item">
-                <x-admin-nav-link :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                <x-admin-nav-link class="nav-link" :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
+                    <i class="fas fa-check-square"></i>
                     <span>Tables</span>
                 </x-admin-nav-link>
             </li>
 
             <li class="nav-item">
-                <x-admin-nav-link :href="route('admin.reservation.index')" :active="request()->routeIs('admin.reservation.index')">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                <x-admin-nav-link class="nav-link" :href="route('admin.reservation.index')" :active="request()->routeIs('admin.reservation.index')">
+                    <i class="fas fa-highlighter"></i>
                     <span>Reservation</span>
                 </x-admin-nav-link>
             </li>
@@ -85,8 +85,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-
         </ul>
         <!-- End of Sidebar -->
 

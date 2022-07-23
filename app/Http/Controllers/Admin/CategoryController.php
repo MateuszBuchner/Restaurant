@@ -37,10 +37,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
         $category = new Category($request->all());
-        $category->image = $request->file('image')->store('products');
+        if ($request->hasFile('image')){
+            $category->image = $request->file('image')->store('products');
+        }
         $category->save();
 
         return redirect(route('admin.categories.index'));
@@ -75,18 +77,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryStoreRequest $request, Category $category)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required'
-        ]);
 
-        $category->update([
-            'name'=> $request->name,
-            'description'=> $request->description,
-            'image'=> $request->image
-        ]);
+        $category->fill($request->all());
+        if ($request->hasFile('image')){
+            $category->image = $request->file('image')->store('products');
+        }
+        $category->save();
 
         return redirect(route('admin.categories.index'));
 
@@ -98,8 +96,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect(route('admin.categories.index'));
     }
 }
