@@ -3,7 +3,7 @@
 
 
 <div class="main">
-    <h1>Categories</h1>
+    <h1>Kategorie</h1>
 
     <div class="">
         <a class="btn btn-dark" href="{{ route('admin.categories.create') }}" role="button">Nowa kategoria</a>

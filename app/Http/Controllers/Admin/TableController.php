@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TableStoreRequest;
 use App\Models\Table;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,16 @@ class TableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TableStoreRequest $request)
     {
-        //
+
+        $validated = $request->validate([
+
+        ]);
+
+        $Table = new Table($request->validated());
+        $Table->save();
+        return redirect(route('admin.tables.index'));
     }
 
     /**
@@ -57,9 +65,9 @@ class TableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Table $table)
     {
-        //
+        return view('admin.tables.edit', compact('table'));
     }
 
     /**
@@ -69,9 +77,12 @@ class TableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TableStoreRequest $request, Table $table)
     {
-        //
+        $table->fill($request->all());
+        $table->save();
+
+        return redirect(route('admin.tables.index'));
     }
 
     /**
@@ -80,8 +91,9 @@ class TableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Table $table)
     {
-        //
+        $table->delete();
+        return redirect(route('admin.tables.index'));
     }
 }

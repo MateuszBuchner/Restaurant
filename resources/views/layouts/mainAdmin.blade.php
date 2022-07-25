@@ -53,28 +53,28 @@
             <li class="nav-item aha">
                 <x-admin-nav-link class="nav-link" :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
                     <i class="far fa-list-alt"></i>
-                    <span>Categories</span>
+                    <span>Kategorie</span>
                 </x-admin-nav-link>
             </li>
 
             <li class="nav-item">
                 <x-admin-nav-link class="nav-link" :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
                     <i class="fas fa-clipboard"></i>
-                    <span>Menus</span>
+                    <span>Menu</span>
                 </x-admin-nav-link>
             </li>
 
             <li class="nav-item">
                 <x-admin-nav-link class="nav-link" :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
                     <i class="fas fa-check-square"></i>
-                    <span>Tables</span>
+                    <span>Stoliki</span>
                 </x-admin-nav-link>
             </li>
 
             <li class="nav-item">
-                <x-admin-nav-link class="nav-link" :href="route('admin.reservation.index')" :active="request()->routeIs('admin.reservation.index')">
+                <x-admin-nav-link class="nav-link" :href="route('admin.reservations.index')" :active="request()->routeIs('admin.reservations.index')">
                     <i class="fas fa-highlighter"></i>
-                    <span>Reservation</span>
+                    <span>Rezerwacje</span>
                 </x-admin-nav-link>
             </li>
 

@@ -20,7 +20,7 @@
             <div class="mb-3">
                 <label for="image" class="form-label" >Default file input example</label>
                 <input class="form-control" type="file" name="image" id="formFile" src="{{ asset('storage/' . $category->image) }}">
-              </div>
+            </div>
             <div class="form-group">
                 <label for="description" >Example textarea</label>
                 <textarea class="form-control" name="description" id="exampleFormControlTextarea1">{{ $category->description }}</textarea>

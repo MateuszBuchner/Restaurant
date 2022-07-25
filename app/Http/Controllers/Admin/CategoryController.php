@@ -39,7 +39,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        $category = new Category($request->all());
+        $category = new Category($request->validated());
         if ($request->hasFile('image')){
             $category->image = $request->file('image')->store('products');
         }

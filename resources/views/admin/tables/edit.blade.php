@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="main">
-    <h1>Stoliki</h1>
+    <h1>Categories</h1>
 
     <div class="">
         <a class="btn btn-dark button-back" href="{{ route('admin.tables.index') }}" role="button">Powrót do karegori</a>
@@ -10,15 +10,16 @@
     </div>
 
     <div class="smal main">
-        <form method="POST" action="{{ route('admin.tables.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.tables.update', $table->id) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="name" class="form-label">Nazwa</label>
-                <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Podaj nazwe">
+                <input class="form-control" type="text" name="name" value="{{ $table->name }}">
             </div>
             <div class="form-group">
-                <label for="name" class="form-label">Liczba gości</label>
-                <input class="form-control @error('guest_number') is-invalid @enderror" type="text" name="guest_number" placeholder="Podaj liczbe osób">
+                <label for="name" class="form-label">Ilość osób	</label>
+                <input class="form-control" type="text" name="guest_number" value="{{ $table->guest_number }}">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Miejsce</label>

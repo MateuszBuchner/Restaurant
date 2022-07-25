@@ -40,7 +40,7 @@ class MenuController extends Controller
      */
     public function store(MenuStoreRequest $request)
     {
-        $menu = new Menu($request->all());
+        $menu = new Menu($request->validated());
         if ($request->hasFile('image')){
             $menu->image = $request->file('image')->store('menus');
         }
@@ -70,9 +70,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Menu $menu)
     {
-        //
+        $categories = Category::all();
+        return view('admin.menus.edit', compact('menu', 'categories'));
     }
 
     /**
@@ -82,9 +83,22 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Menu $menu)
     {
-        //
+
+        $menu->fill($request->all());
+        if ($request->hasFile('image')){
+            $menu->image = $request->file('image')->store('menus');
+        }
+
+        if($request->has('categories')) {
+            $menu->categories()->sync($request->categories);
+        }
+
+        $menu->save();
+
+        return redirect(route('admin.menus.index'));
+
     }
 
     /**
@@ -93,8 +107,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
-        //
+        $menu->categories()->detach();
+        $menu->delete();
+        return redirect(route('admin.menus.index'));
     }
 }
