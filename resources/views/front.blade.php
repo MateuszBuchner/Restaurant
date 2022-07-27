@@ -39,7 +39,7 @@
         <header class="header_section">
             <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="/">
                 <span>
                     Feane
                 </span>
@@ -47,19 +47,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mx-auto ">
                     <li class="nav-item active">
-                    <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('menu.index') }}">Menu</a>
+                        <a class="nav-link" href="{{ route('categories.index') }}">Kategorie</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('reservation.step.one') }}">Rezerwacje</a>
+                        <a class="nav-link" href="">Rezerwacje</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('reservation.step.one') }}">Rezerwacje</a>
-                        </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#section3">O nas</a>
+                        <a class="nav-link" href="#section3">O nas</a>
                     </li>
                 </ul>
                 <div class="user_option">

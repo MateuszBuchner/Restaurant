@@ -17,7 +17,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
+        $menus = Menu::paginate(4);
         return view('admin.menus.index', compact('menus'));
     }
 
@@ -51,6 +51,7 @@ class MenuController extends Controller
         }
 
         return redirect(route('admin.menus.index'))->with('success','');
+
     }
 
     /**

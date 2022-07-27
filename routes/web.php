@@ -32,7 +32,7 @@ Route::get('/dashboard', function () {
 Route::get('/', [FrontWelcomeController::class, 'index']);
 Route::get('/menu', [FrontMenuController::class, 'index'])->name('menu.index');
 Route::get('/categories', [FrontCategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/{category}', [FrontCategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [FrontCategoryController::class, 'show'])->name('categories.show');
 Route::get('/reservation/step-one', [FrontReservationController::class, 'stepOne'])->name('reservation.step.one');
 Route::get('/reservation/step-two', [FrontReservationController::class, 'stepTwo'])->name('reservation.step.two');
 

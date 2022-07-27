@@ -50,7 +50,7 @@ class ReservationController extends Controller
         }
 
         $request_date = Carbon::parse($request->res_date);
-        foreach ($table->reservation as $res) {
+        foreach ($table->reservations as $res) {
             if ($res->res_date->format('H') == $request_date->format('H')){
                 return back()->with('warning2', 'Ten termin jest już zarezerwowany');
             }
@@ -94,6 +94,18 @@ class ReservationController extends Controller
      */
     public function update(ReservationStoreRequest $request, Reservation $reservation)
     {
+
+        $table = Table::findOrFail($request->table_id);
+        if($request->guest_number > $table->guest_number){
+            return back()->with('warning', 'Proszę dopasuj liczbę gości do liczby miejsc przy stoliku');
+        }
+        $reservations = $table->reservations()->where('id', '!=', $reservation->id)->get();
+        $request_date = Carbon::parse($request->res_date);
+        foreach ($reservations as $res) {
+            if ($res->res_date->format('H') == $request_date->format('H')){
+                return back()->with('warning2', 'Ten termin jest już zarezerwowany');
+            }
+        }
 
         $reservation->fill($request->all());
         $reservation->save();

@@ -39,5 +39,6 @@
                 @endforeach
         </tbody>
     </table>
+    {{ $menus->links() }}
 </div>
 @endsection
