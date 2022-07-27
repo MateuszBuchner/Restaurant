@@ -16,7 +16,7 @@
                 <th scope="col">Ilość osób</th>
                 <th scope="col">Status</th>
                 <th scope="col">Miejsce</th>
-                <th scope="col">Akcja</th>
+                <th scope="col" id="table_akcja">Akcja</th>
             </tr>
             </thead>
             <tbody>

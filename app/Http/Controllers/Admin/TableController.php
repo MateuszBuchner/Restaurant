@@ -39,13 +39,9 @@ class TableController extends Controller
     public function store(TableStoreRequest $request)
     {
 
-        $validated = $request->validate([
-
-        ]);
-
         $Table = new Table($request->validated());
         $Table->save();
-        return redirect(route('admin.tables.index'));
+        return redirect(route('admin.tables.index'))->with('success','');
     }
 
     /**
@@ -82,7 +78,7 @@ class TableController extends Controller
         $table->fill($request->all());
         $table->save();
 
-        return redirect(route('admin.tables.index'));
+        return redirect(route('admin.tables.index'))->with('warning','');
     }
 
     /**
@@ -94,6 +90,6 @@ class TableController extends Controller
     public function destroy(Table $table)
     {
         $table->delete();
-        return redirect(route('admin.tables.index'));
+        return redirect(route('admin.tables.index'))->with('danger','');
     }
 }

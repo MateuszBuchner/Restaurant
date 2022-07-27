@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Table;
+use App\Enums\TableStatus;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ReservationStoreRequest;
-use App\Models\Table;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ReservationStoreRequest;
 
 class ReservationController extends Controller
 {
@@ -29,7 +31,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $tables = Table::all();
+        $tables = Table::where('status', TableStatus::Dostepne)->get();
         return view('admin.reservations.create', compact('tables'));
     }
 
@@ -41,9 +43,23 @@ class ReservationController extends Controller
      */
     public function store(ReservationStoreRequest $request)
     {
+
+        $table = Table::findOrFail($request->table_id);
+        if($request->guest_number > $table->guest_number){
+            return back()->with('warning', 'Proszę dopasuj liczbę gości do liczby miejsc przy stoliku');
+        }
+
+        $request_date = Carbon::parse($request->res_date);
+        foreach ($table->reservation as $res) {
+            if ($res->res_date->format('H') == $request_date->format('H')){
+                return back()->with('warning2', 'Ten termin jest już zarezerwowany');
+            }
+        }
+
+
         $reservation = new Reservation($request->validated());
         $reservation->save();
-        return redirect(route('admin.reservations.index'));
+        return redirect(route('admin.reservations.index'))->with('success','');
     }
 
     /**
@@ -65,6 +81,7 @@ class ReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
+        $tables = Table::all();
         return view('admin.reservations.edit', compact('reservation', 'tables'));
     }
 
@@ -80,7 +97,7 @@ class ReservationController extends Controller
 
         $reservation->fill($request->all());
         $reservation->save();
-        return redirect(route('admin.reservations.index'));
+        return redirect(route('admin.reservations.index'))->with('warning','');
 
     }
 
@@ -93,6 +110,6 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         $reservation->delete();
-        return redirect(route('admin.reservations.index'));
+        return redirect(route('admin.reservations.index'))->with('danger','');
     }
 }

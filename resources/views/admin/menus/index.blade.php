@@ -14,10 +14,9 @@
                 <th scope="col">Nr</th>
                 <th scope="col">Nazwa</th>
                 <th scope="col">Cena</th>
-                <th scope="col">Kategoria</th>
                 <th scope="col">Zdjęcie</th>
                 <th scope="col">Opis</th>
-                <th scope="col">Akcja</th>
+                <th scope="col" id="table_akcja">Akcja</th>
             </tr>
             </thead>
             <tbody>
@@ -26,7 +25,6 @@
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $menu->name }}</td>
                         <td>{{ $menu->price }}</td>
-                        <td>{{ $menu->ca }}</td>
                         <td><img class="image_index" src="{{ asset('storage/' . $menu->image) }}"></td>
                         <td>{{ $menu->description }}</td>
                         <td>

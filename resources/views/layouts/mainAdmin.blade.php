@@ -167,7 +167,23 @@
                         </li>
                     </ul>
                 </nav>
-
+                <div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            <span>Sukces! Pomyślnie utworzono obiekt!{{ session()->get('success') }}</span>
+                        </div>
+                    @endif
+                    @if (session()->has('warning'))
+                        <div class="alert alert-warning" role="alert">
+                            <span>Sukces! Pomyślnie edytowano obiekt!{{ session()->get('warning') }}</span>
+                        </div>
+                    @endif
+                    @if (session()->has('danger'))
+                        <div class="alert alert-danger" role="alert">
+                            <span>Sukces! Pomyslnie ununięto obiekt!{{ session()->get('danger') }}</span>
+                        </div>
+                    @endif
+                </div>
                 @yield('content')
             </div>
 

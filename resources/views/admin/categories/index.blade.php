@@ -1,7 +1,6 @@
 @extends('layouts.mainAdmin')
 @section('content')
 
-
 <div class="main">
     <h1>Kategorie</h1>
 
@@ -15,7 +14,7 @@
                 <th scope="col">Nazwa</th>
                 <th scope="col">Zdjęcie</th>
                 <th scope="col">Opis</th>
-                <th scope="col">Akcja</th>
+                <th scope="col" id="table_akcja">Akcja</th>
             </tr>
             </thead>
             <tbody>

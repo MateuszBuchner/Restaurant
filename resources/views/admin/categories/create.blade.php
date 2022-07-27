@@ -10,19 +10,28 @@
     </div>
 
     <div class="smal main">
-        <form method="POST" action="{{ route('admin.categories.store') }}">
+        <form method="POST" action="{{ route('admin.categories.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name" class="form-label">Default file input example</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Default input">
+                @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
-            <div class="mb-3">
-                <label for="image" class="form-label" >Default file input example</label>
+            <div class="form-group">
+                <label for="image" class="form-label" >Zdjęcie</label>
                 <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="formFile">
-              </div>
+                @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="form-group">
                 <label for="description" >Example textarea</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+                @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

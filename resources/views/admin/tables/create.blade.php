@@ -15,10 +15,16 @@
             <div class="form-group">
                 <label for="name" class="form-label">Nazwa</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Podaj nazwe">
+                @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="name" class="form-label">Liczba gości</label>
                 <input class="form-control @error('guest_number') is-invalid @enderror" type="text" name="guest_number" placeholder="Podaj liczbe osób">
+                @error('guest_number')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Miejsce</label>

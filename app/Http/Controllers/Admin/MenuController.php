@@ -50,7 +50,7 @@ class MenuController extends Controller
             $menu->categories()->attach($request->categories);
         }
 
-        return redirect(route('admin.menus.index'));
+        return redirect(route('admin.menus.index'))->with('success','');
     }
 
     /**
@@ -97,7 +97,7 @@ class MenuController extends Controller
 
         $menu->save();
 
-        return redirect(route('admin.menus.index'));
+        return redirect(route('admin.menus.index'))->with('warning','');
 
     }
 
@@ -111,6 +111,6 @@ class MenuController extends Controller
     {
         $menu->categories()->detach();
         $menu->delete();
-        return redirect(route('admin.menus.index'));
+        return redirect(route('admin.menus.index'))->with('danger','');
     }
 }

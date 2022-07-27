@@ -1,7 +1,6 @@
 @extends('layouts.mainAdmin')
 @section('content')
 
-
 <div class="main">
     <h1>Rezerwacje</h1>
 
@@ -19,7 +18,7 @@
                 <th scope="col">Data rezerwacji</th>
                 <th scope="col">Numer stolika</th>
                 <th scope="col">Numer klienta</th>
-                <th scope="col">Akcja</th>
+                <th scope="col" id="table_akcja">Akcja</th>
             </tr>
             </thead>
             <tbody>
@@ -31,7 +30,7 @@
                         <td>{{ $reservation->email }}</td>
                         <td>{{ $reservation->phone }}</td>
                         <td>{{ $reservation->res_date }}</td>
-                        <td>{{ $reservation->table_id  }}</td>
+                        <td>{{ $reservation->table->name  ?? 'Brak Stolika' }}</td>
                         <td>{{ $reservation->guest_number }}</td>
                         <td>
                             <a class="btn btn-dark" href="{{ route('admin.reservations.edit', $reservation->id) }}" role="button">Edytuj</a>

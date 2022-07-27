@@ -45,8 +45,9 @@ class CategoryController extends Controller
         }
         $category->save();
 
-        return redirect(route('admin.categories.index'));
+        return redirect(route('admin.categories.index'))->with('success','');
     }
+
 
     /**
      * Display the specified resource.
@@ -86,7 +87,7 @@ class CategoryController extends Controller
         }
         $category->save();
 
-        return redirect(route('admin.categories.index'));
+        return redirect(route('admin.categories.index'))->with('warning','');
 
     }
 
@@ -98,7 +99,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $category->menu()->detach();
         $category->delete();
-        return redirect(route('admin.categories.index'));
+        return redirect(route('admin.categories.index'))->with('danger','');
     }
 }
