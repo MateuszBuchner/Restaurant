@@ -19,7 +19,10 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "bootstrap-steps": "^1.0.3",
+        "bs-stepper": "^1.7.0",
         "jquery": "^3.6.0",
+        "smartwizard": "^6.0.2",
         "startbootstrap-sb-admin-2": "^3.3.7"
     }
 }

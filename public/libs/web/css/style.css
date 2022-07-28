@@ -374,6 +374,15 @@ a:focus {
   background-color: #e69c00;
 }
 
+#img-res{
+    height: 500px;
+}
+
+.img-box2{
+    display: flex;
+    justify-content: space-around;
+}
+
 .slider_section .img-box img {
   width: 100%;
 }
@@ -519,6 +528,7 @@ a:focus {
   overflow: hidden;
   background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
   height: 470px;
+  width: 350px;
 }
 
 .food_section .box .img-box {

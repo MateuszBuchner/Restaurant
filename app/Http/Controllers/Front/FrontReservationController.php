@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Front;
-
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Models\Table;
+use App\Enums\TableStatus;
+use App\Rules\DataBetween;
+use App\Rules\TimeBetween;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontReservationController extends Controller
 {
@@ -12,53 +17,61 @@ class FrontReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function stepOne(Request $request)
     {
-        //
+        $reservation = $request->session()->get('reservation');
+        $min_date = Carbon::today();
+        $max_date = Carbon::now()->addWeek();
+        return view('reservation.step-one', compact('reservation', 'min_date', 'max_date'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function storeStepOne(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'email' => ['required', 'email'],
+            'res_date' => ['required', 'date', new DataBetween, new TimeBetween],
+            'phone' => ['required'],
+            'guest_number' => ['required'],
+        ]);
+
+        if (empty($request->session()->get('reservation'))) {
+            $reservation = new Reservation();
+            $reservation->fill($validated);
+            $request->session()->put('reservation', $reservation);
+        } else {
+            $reservation = $request->session()->get('reservation');
+            $reservation->fill($validated);
+            $request->session()->put('reservation', $reservation);
+        }
+
+        return to_route('reservation.step-two');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function stepTwo(Request $request)
     {
-        //
+        $reservation = $request->session()->get('reservation');
+        $res_table_ids = Reservation::orderBy('res_date')->get()->filter(function ($value) use ($reservation) {
+            return $value->res_date->format('Y-m-d') == $reservation->res_date->format('Y-m-d');
+        })->pluck('table_id');
+        $tables = Table::where('status', TableStatus::Dostepne)
+            ->where('guest_number', '>=', $reservation->guest_number)
+            ->whereNotIn('id', $res_table_ids)->get();
+        return view('reservation.step-two', compact('reservation', 'tables'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function storeStepTwo(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'table_id' => ['required']
+        ]);
+        $reservation = $request->session()->get('reservation');
+        $reservation->fill($validated);
+        $reservation->save();
+        $request->session()->forget('reservation');
+
+        return view('reservation.step-tree');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

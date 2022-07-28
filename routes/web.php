@@ -8,8 +8,9 @@ use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Front\FrontMenuController;
 use App\Http\Controllers\Admin\ReservationController;
-use App\Http\Controllers\Front\FrontCategoryController;
 use App\Http\Controllers\Front\FrontWelcomeController;
+use App\Http\Controllers\Front\FrontCategoryController;
+use App\Http\Controllers\Front\FrontReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,10 @@ Route::get('/', [FrontWelcomeController::class, 'index']);
 Route::get('/menu', [FrontMenuController::class, 'index'])->name('menu.index');
 Route::get('/categories', [FrontCategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [FrontCategoryController::class, 'show'])->name('categories.show');
-Route::get('/reservation/step-one', [FrontReservationController::class, 'stepOne'])->name('reservation.step.one');
-Route::get('/reservation/step-two', [FrontReservationController::class, 'stepTwo'])->name('reservation.step.two');
+Route::get('/reservation/step-one', [FrontReservationController::class, 'stepOne'])->name('reservation.step-one');
+Route::post('/reservation/step-one', [FrontReservationController::class, 'storeStepOne'])->name('reservation.store.step-one');
+Route::get('/reservation/step-two', [FrontReservationController::class, 'stepTwo'])->name('reservation.step-two');
+Route::post('/reservation/step-two', [FrontReservationController::class, 'storeStepTwo'])->name('reservation.store.step-two');
 
 // Admin
 

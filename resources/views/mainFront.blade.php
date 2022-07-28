@@ -29,6 +29,22 @@
         <!-- responsive style -->
         <link href="{{ asset('libs/web/css/responsive.css') }}" rel="stylesheet" />
 
+
+
+        <link href="{{ asset('libs/web/css/font-awesome.css') }}" rel="stylesheet" />
+        <script src="{{ asset('libs/web/css/font-awesome.css') }}"></script>
+
+        <script src="{{ asset('libs/jquery/jquery.min2.js') }}"></script>
+
+        <link href="{{ asset('libs/web/css/bootstrap2.css') }}" rel="stylesheet" />
+
+        <link href="{{ asset('libs/web/css/steps-style.css') }}" rel="stylesheet" />
+        <script src="{{ asset('libs/web/js/bootstrap.bundle.min.js') }}"></script>
+
+        <script src="{{ asset('libs/web/js/script.js') }}"></script>
+
+
+
     </head>
     <body>
         <!-- header section strats -->
@@ -49,7 +65,7 @@
                         <a class="nav-link" id="hal" href="{{ route('categories.index') }}">Kategorie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="hal" href="">Rezerwacje</a>
+                        <a class="nav-link" id="hal" href="{{ route('reservation.step-one') }}">Rezerwacje</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="hal" href="#section3">O nas</a>
