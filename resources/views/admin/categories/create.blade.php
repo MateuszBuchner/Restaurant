@@ -13,8 +13,8 @@
         <form method="POST" action="{{ route('admin.categories.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="name" class="form-label">Default file input example</label>
-                <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Default input">
+                <label for="name" class="form-label">Nazwa kategorii</label>
+                <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Nazwa kategorii">
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -27,7 +27,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="description" >Example textarea</label>
+                <label for="description" >Opis</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>

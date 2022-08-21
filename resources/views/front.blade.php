@@ -53,7 +53,8 @@
                         <a class="nav-link" href="{{ route('categories.index') }}">Kategorie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Rezerwacje</a>
+                        <a class="nav-link" href="{{ route('reservation.step-one') }}">Rezerwacje</a>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#section3">O nas</a>

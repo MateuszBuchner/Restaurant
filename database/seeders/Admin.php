@@ -21,7 +21,7 @@ class Admin extends Seeder
             'email' => 'admin@gmail.com',
             'is_admin' => 1,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => '$2y$10$suozdUihaGLvnkkuLTroQeY3aN8YgtyKbf.obwff2a84b0ekUY6gC',
             'remember_token' => Str::random(10),
         ]);
     }
