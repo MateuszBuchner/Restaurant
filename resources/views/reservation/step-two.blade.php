@@ -34,7 +34,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </fieldset>
                             <fieldset>
@@ -61,8 +60,13 @@
                                     </div>
                                 </div>
                             </fieldset>
+
+                            <div class="bntconf">
+                                <button type="submit" class="btn step-upd">Aktualizuj</button>
+                            </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>

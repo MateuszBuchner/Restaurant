@@ -25,9 +25,9 @@
                             </ul>
                             <!-- fieldsets -->
                             <fieldset>
-                                <div class="form-card">
+                                <div class="form-card shadow-lg p-3 mb-5 bg-body rounded">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="first_name" placeholder="Podaj Imie" value="{{ $reservation->first_name ?? ''  }}">
+                                        <input class="form-control" id="halo" type="text" name="first_name" placeholder="Podaj Imie" value="{{ $reservation->first_name ?? ''  }}">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="last_name" placeholder="Podaj Nazwisko" value="{{ $reservation->last_name ?? ''  }}">
@@ -53,7 +53,7 @@
                                         <input class="form-control" type="text" name="guest_number" placeholder="Podaj Liczbe Gości" value="{{ $reservation->guest_number ?? ''  }}">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary">Aktualizuj</button>
+                                    <button type="submit" class="btn step-upd">Aktualizuj</button>
 
                                 </div>
                             </fieldset>
