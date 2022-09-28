@@ -3,7 +3,8 @@
 
 ## O projekcie
 
-Aplikacja Fullstack stworzona, aby publikować swoje ogłoszenia samochodowe.
+Strona internetowa pozwala dodawać/edytować/ usuwać kategorie, dania do restauracji.
+Występuje również rezerwacja danego stolika z ograniczoną liczbą miejsc uzgodnioną na dany dzień i godzinę.
 
 ## Instalacja
 
@@ -31,4 +32,8 @@ Login: admin@gmail.com
 Haslo: haslo1234
 
 ## Wygląd aplikacji
+
+
+
+https://user-images.githubusercontent.com/61974282/192763982-22fc611e-536e-4318-943e-098714a4184d.mp4
 
